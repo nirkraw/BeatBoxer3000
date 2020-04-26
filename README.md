@@ -10,9 +10,10 @@
 -BONUS: Store recordings in database and have shareable link
 
 # Wireframe
-
+## Normal app view:
 ![Wireframe](./wireframe/beatboxerwireframe.png)
 
+## Modal for recording a pad sound:
 ![Wireframe Modal](./wireframe/beatboxermodal.png)
 
 # Architecture and Technology 
