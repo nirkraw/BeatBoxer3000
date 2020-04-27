@@ -4,7 +4,7 @@
 
 # Functionality & MVP
 
-- Upon a keypress users can create a basic pad that can play a sound
+- Users can create a basic pad that can play a sound upon a keypress.
 - Users can record their own audio and add it to chosen pad. 
 - Users can record their beat and have it played back. 
 
