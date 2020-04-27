@@ -5,10 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
+
+    <link href="./public/images/studio.jpg" rel="studio" type="image" />
+    <link href="./public/images/redbutton.png" rel="studio" type="image" />
+
+
+    <link href="./public/audio/kick.wav" rel="kick" type="wav" />
+    <link href="./public/audio/hihat.wav" rel="hihat" type="wav" />
+    <link href="./public/audio/hey.wav" rel="hey" type="wav" />
+    <link href="./public/audio/MRLSHZ_vocal_group_ah_chord_harm_dry_Cm.wav" rel="ah1" type="wav" />
+    <link href="./public/audio/MRLSHZ_vocal_group_ah_chord_harm_dry_Fm7.wav" rel="ah2" type="wav" />
+    <link href="./public/audio/Reverse_Crash_1.wav" rel="rev-crash" type="wav" />
+    <link href="./public/audio/snare.wav" rel="snare" type="wav" />
+    <link href="./public/audio/woo.wav" rel="woo" type="wav" />
+    <link href="./public/audio/PMBH_Crash_Clash.wav" rel="crash" type="wav" />
+    
+
     <title>Document</title>
   </head>
 
   <body>
     <script src="./dist/main.js"></script>
+    <div class="pad-container">
+      <div class=pad-subcontainer>
+        <div padCode="81" class="pad">
+          <p>Q</p>
+          <img class="red-button" src="./public/images/redbutton.png" alt="record-button">
+        </div>
+        <div padCode="87" class="pad">
+          <p>W</p>
+          <img class="red-button" src="./public/images/redbutton.png" alt="record-button">
+        </div>
+        <div padCode="69" class="pad">
+          <p>E</p>
+          <img class="red-button" src="./public/images/redbutton.png" alt="record-button">
+        </div>
+      </div>
+      <div class=pad-subcontainer>
+        <div padCode="65" class="pad">
+          <p>A</p>
+          <img class="red-button" src="./public/images/redbutton.png" alt="record-button">
+        </div>
+        <div padCode="83" class="pad">
+          <p>S</p>
+          <img class="red-button" src="./public/images/redbutton.png" alt="record-button">
+        </div>
+        <div padCode="68" class="pad">
+          <p>D</p>
+          <img class="red-button" src="./public/images/redbutton.png" alt="record-button">
+        </div>
+      </div>
+        <div class=pad-subcontainer>
+        <div padCode="90" class="pad">
+          <p>Z</p>
+          <img class="red-button" src="./public/images/redbutton.png" alt="record-button">
+        </div>
+        <div padCode="88" class="pad">
+          <p>X</p>
+          <img class="red-button" src="./public/images/redbutton.png" alt="record-button">
+        </div>
+        <div padCode="67" class="pad">
+          <p>C</p>
+          <img class="red-button" src="./public/images/redbutton.png" alt="record-button">
+        </div>
+        </div>
+    </div>
+
+    <audio padCode="81" src="/public/audio/kick.wav"></audio>
+    <audio padCode="87" src="/public/audio/snare.wav" ></audio>
+    <audio padCode="69" src="/public/audio/hihat.wav"></audio>
+    <audio padCode="65" src="/public/audio/MRLSHZ_vocal_group_ah_chord_harm_dry_Cm.wav"></audio>
+    <audio padCode="83" src="/public/audio/MRLSHZ_vocal_group_ah_chord_harm_dry_Fm7.wav"></audio>
+    <audio padCode="68" src="/public/audio/Reverse_Crash_1.wav"></audio>
+    <audio padCode="90" src="/public/audio/PMBH_Crash_Clash.wav"></audio>
+    <audio padCode="88" src="/public/audio/woo.wav"></audio>
+    <audio padCode="67" src="/public/audio/hey.wav"></audio>
+
+    <script>
+      window.addEventListener('keydown', playSound);
+      
+      function playSound(e) {
+        console.log(e)
+        const audio = document.querySelector(`audio[padCode="${e.keyCode}"]`)
+        if(!audio) return;
+        audio.currentTime= 0;
+        audio.play();
+        
+        const pad = document.querySelector(`.pad[padCode="${e.keyCode}"]`)
+        pad.classList.add('pressed');
+        setTimeout(function() {
+          pad.classList.remove("pressed")
+        }, 100)
+      };
+    </script>
   </body>
 </html>

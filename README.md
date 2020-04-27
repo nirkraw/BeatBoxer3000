@@ -1,6 +1,6 @@
 # Background and Overview
 
--BeatBoxer3000 is an app that allows a user to record their own sounds and then use a drum machine to make beats with those sounds. A user can record and playback their beat. 
+BeatBoxer3000 is an app that allows a user to record their own sounds and then use a drum machine to make beats with those sounds. A user can record and playback their beat. 
 
 # Functionality & MVP
 

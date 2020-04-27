@@ -1,0 +1,63 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(3px);
+    background-image: url("../../public/images/studio.jpg");
+
+}
+
+.pad-container {
+    margin-top: 10%;
+    height: 600px;
+    border-style: outset;
+    border: 5px solid black;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(37, 37, 37);
+}
+
+.pad-subcontainer {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.pad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 240, 240);
+    height: 100px;
+    width: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 50px;
+    border-radius: 20px;
+    position: relative;
+
+    border: 5px rgb(73, 73, 73) outset;
+    box-shadow: -1px -5px 10px  rgb(248, 248, 248);
+}
+
+
+.pressed {
+    border: 5px rgb(250, 13, 13) inset;
+    transform: scale(1.0);
+}
+
+
+.red-button {
+    position: absolute;
+    left: 31px;
+    top: 115px;
+    height: 30px;
+}
+
+.red-button:hover {
+    cursor: pointer;
+    border: 1px solid red;
+    border-radius: 40px;
+}
