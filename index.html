@@ -77,26 +77,90 @@
     <audio padCode="65" src="/public/audio/MRLSHZ_vocal_group_ah_chord_harm_dry_Cm.wav"></audio>
     <audio padCode="83" src="/public/audio/MRLSHZ_vocal_group_ah_chord_harm_dry_Fm7.wav"></audio>
     <audio padCode="68" src="/public/audio/Reverse_Crash_1.wav"></audio>
-    <audio padCode="90" src="/public/audio/PMBH_Crash_Clash.wav"></audio>
+    <audio controls padCode="90" src="/public/audio/PMBH_Crash_Clash.wav"></audio>
     <audio padCode="88" src="/public/audio/woo.wav"></audio>
     <audio padCode="67" src="/public/audio/hey.wav"></audio>
 
+    <audio id="my-audio" controls></audio>
+    <!-- <audio id="my-audio-2" controls></audio> -->
+    
+    <button id="btnStart">START RECORDING</button><br />
+    <button id="btnStop">STOP RECORDING</button>
+
     <script>
+    
+
+      buttons = document.querySelectorAll("p")
+      for (const button of buttons) {
+        button.addEventListener("click", playSound)
+      }
       window.addEventListener('keydown', playSound);
-      
+
       function playSound(e) {
-        console.log(e)
-        const audio = document.querySelector(`audio[padCode="${e.keyCode}"]`)
+        let event;
+        if(e.keyCode) {
+          event = e.keyCode 
+        } else {
+          event = e.path[1].attributes[0].nodeValue
+        }
+        const audio = document.querySelector(`audio[padCode="${event}"]`)
         if(!audio) return;
         audio.currentTime= 0;
         audio.play();
         
-        const pad = document.querySelector(`.pad[padCode="${e.keyCode}"]`)
+        const pad = document.querySelector(`.pad[padCode="${event}"]`)
         pad.classList.add('pressed');
         setTimeout(function() {
           pad.classList.remove("pressed")
         }, 100)
       };
     </script>
+
+    <script>
+
+      navigator.mediaDevices.getUserMedia({audio:true, video:false})
+        .then(function (mediaStreamObj) {
+          //connect the media stream to the first video element
+          let audio = document.getElementById('my-audio');
+          audio.srcObject = mediaStreamObj;
+          
+      
+
+          audio.onloadedmetadata = function (e) {
+            //show in the audio element what is being captured by the webcam
+            audio.play();
+          };
+
+          //add listeners for saving audio/audio
+          let start = document.getElementById('btnStart');
+          let stop = document.getElementById('btnStop');
+          let savedAudio = document.querySelector("audio[padCode='90']")
+          let mediaRecorder = new MediaRecorder(mediaStreamObj);
+          let chunks = [];
+
+          start.addEventListener('click', (e) => {
+            mediaRecorder.start();
+            console.log(mediaRecorder.state);
+          })
+          stop.addEventListener('click', (e) => {
+            mediaRecorder.stop();
+            console.log(mediaRecorder.state);
+          });
+          mediaRecorder.ondataavailable = function (e) {
+            chunks.push(e.data);
+          }
+          mediaRecorder.onstop = (e) => {
+            let blob = new Blob(chunks, { 'type': 'audio/wav' });
+            chunks = [];
+            let audioURL = window.URL.createObjectURL(blob);
+              console.log(audioURL);
+            savedAudio.src = audioURL;
+  
+          }
+        })
+        .catch(function (err) {
+          console.log(err.name, err.message);
+        });
+  </script>
   </body>
 </html>

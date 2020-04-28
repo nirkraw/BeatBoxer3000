@@ -42,6 +42,16 @@ body {
     box-shadow: -1px -5px 10px  rgb(248, 248, 248);
 }
 
+::selection {
+    color: none;
+    background: none;
+}
+
+.pad:hover {
+    cursor: pointer;
+    background-color: blanchedalmond;
+}
+
 
 .pressed {
     border: 5px rgb(250, 13, 13) inset;
@@ -60,4 +70,19 @@ body {
     cursor: pointer;
     border: 1px solid red;
     border-radius: 40px;
+}
+
+.pad > p {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 40px;
+
+}
+
+#my-audio, #my-audio-2 {
+display: inline-block;
+width: 300px;
+z-index: 10;
+border: 5px solid black;
 }
