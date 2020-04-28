@@ -81,27 +81,39 @@
     <audio padCode="88" src="/public/audio/woo.wav"></audio>
     <audio padCode="67" src="/public/audio/hey.wav"></audio>
 
-    <!-- <audio id="my-audio" controls></audio> -->
-
-     
-    <!-- <button id="btnStart">START RECORDING</button><br /> -->
-    <!-- <button id="btnStop">STOP RECORDING</button>  -->
+    <audio id="metronome" src="/public/audio/beep.wav"></audio>
 
 
-    <script> //button blinks while recording 
+    <script> //button blinks and metronome 
       recordButtons = document.querySelectorAll(".red-button")
+      metronome = document.getElementById("metronome")
+
       for (const button of recordButtons) {
-        
         button.addEventListener("click", ()=>{
+         
           if(button.classList.contains("record-on")) {
             button.classList.remove("record-on")
+            clearInterval(beep);
+            metronome.pause();
           } else {
               button.classList.add("record-on")
+              beep = setInterval(() => {
+              metronome.volume = 1.0
+              metronome.play();
+            }, 700);
           }
           for (const newButton of recordButtons) {
-            if(button !== newButton)
-               newButton.classList.remove("record-on")
+            if(button !== newButton) {
+              if(button.classList.contains("record-on")) {
+                newButton.classList.add("not-recording")
+              } else {
+                newButton.classList.remove("not-recording")
+              }
+            }
           }
+           setTimeout(() => {
+            clearInterval(beep)
+          }, 2800);
         })
       }
 
@@ -126,7 +138,6 @@
         if(!audio) return;
         audio.currentTime= 0;
         audio.play();
-        
         const pad = document.querySelector(`.pad[padCode="${event}"]`)
         pad.classList.add('pressed');
         setTimeout(function() {
@@ -139,26 +150,23 @@
 
       navigator.mediaDevices.getUserMedia({audio:true, video:false})
         .then(function (mediaStreamObj) {
-          // let audio = document.getElementById('my-audio');
-          // audio.srcObject = mediaStreamObj;
-          
           let recordButtons = document.querySelectorAll(".red-button"); 
-          // let audioPlayback = document.querySelector("audio[padCode='90']")
-          // let audioPlayback; 
           let mediaRecorder = new MediaRecorder(mediaStreamObj);
           let chunks = [];
 
          for (const button of recordButtons) {
            button.addEventListener('click', (e) => {
              padCode = e.path[1].attributes[0].nodeValue
-             console.log(padCode);
+
              const audioPlayback = document.querySelector(`audio[padCode="${padCode}"]`) 
               if (!button.classList.contains("record-on")) {
                 mediaRecorder.stop();
                 console.log(mediaRecorder.state);
               } else {
+                setTimeout(() => {
                 mediaRecorder.start();
                 console.log(mediaRecorder.state);
+                }, 3500); 
               }
                mediaRecorder.ondataavailable = function (e) {
                chunks.push(e.data);

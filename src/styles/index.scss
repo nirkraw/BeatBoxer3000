@@ -71,6 +71,10 @@ body {
  animation: BLINK 1s infinite;
 }
 
+.not-recording {
+    display: none;
+}
+
 @-webkit-keyframes BLINK {
   0%, 49% {
     border: 2px solid red;
