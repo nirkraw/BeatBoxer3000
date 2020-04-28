@@ -143,13 +143,16 @@
           // audio.srcObject = mediaStreamObj;
           
           let recordButtons = document.querySelectorAll(".red-button"); 
-          let audioPlayback = document.querySelector("audio[padCode='90']")
+          // let audioPlayback = document.querySelector("audio[padCode='90']")
+          // let audioPlayback; 
           let mediaRecorder = new MediaRecorder(mediaStreamObj);
           let chunks = [];
 
          for (const button of recordButtons) {
            button.addEventListener('click', (e) => {
-            //  let audioPlayback = document.querySelector("audio[padCode='90']")
+             padCode = e.path[1].attributes[0].nodeValue
+             console.log(padCode);
+             const audioPlayback = document.querySelector(`audio[padCode="${padCode}"]`) 
               if (!button.classList.contains("record-on")) {
                 mediaRecorder.stop();
                 console.log(mediaRecorder.state);
@@ -157,18 +160,17 @@
                 mediaRecorder.start();
                 console.log(mediaRecorder.state);
               }
+               mediaRecorder.ondataavailable = function (e) {
+               chunks.push(e.data);
+             }
+               mediaRecorder.onstop = (e) => {
+               let blob = new Blob(chunks, { 'type': 'audio/wav' });
+               chunks = [];
+               let audioURL = window.URL.createObjectURL(blob);
+               audioPlayback.src = audioURL;
+             }
            })
          }
-
-          mediaRecorder.ondataavailable = function (e) {
-            chunks.push(e.data);
-          }
-          mediaRecorder.onstop = (e) => {
-            let blob = new Blob(chunks, { 'type': 'audio/wav' });
-            chunks = [];
-            let audioURL = window.URL.createObjectURL(blob);
-            audioPlayback.src = audioURL;
-          }
         })
         .catch(function (err) {
           console.log(err.name, err.message);
