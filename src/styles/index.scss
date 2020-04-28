@@ -17,8 +17,8 @@ body {
     position: relative;
     margin-top: 10%;
     height: 600px;
-    border-left: 10px solid black;
-    border-top: 10px solid black;
+    border-left: 3px solid rgb(46, 46, 46);
+    border-top: 25px solid black;
     border-style: outset;
     width: 500px;
     display: flex;
@@ -84,10 +84,18 @@ body {
     top: 110px;
     height: 30px;
     box-sizing: border-box;
+    border: 3px rgb(73, 73, 73) outset;
+    border-radius: 50px;
+}
+
+.red-button:hover {
+    cursor: pointer;
+    border: 3px rgb(199, 10, 10) outset;
+    border-radius: 40px;
 }
 
 .record-on {
- animation: BLINK 1s infinite;
+ animation: BLINK .8s infinite;
 }
 
 .not-recording {
@@ -105,17 +113,15 @@ body {
   }
 }
 
-.red-button:hover {
-    cursor: pointer;
-    border: 1px solid red;
-    border-radius: 40px;
-}
+
 
 .pad > p {
     width: 100%;
     height: 100%;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 50px;
+    font-family: sans-serif;
+    font-size: 40px;
 
 }
 
