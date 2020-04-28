@@ -77,19 +77,38 @@
     <audio padCode="65" src="/public/audio/MRLSHZ_vocal_group_ah_chord_harm_dry_Cm.wav"></audio>
     <audio padCode="83" src="/public/audio/MRLSHZ_vocal_group_ah_chord_harm_dry_Fm7.wav"></audio>
     <audio padCode="68" src="/public/audio/Reverse_Crash_1.wav"></audio>
-    <audio controls padCode="90" src="/public/audio/PMBH_Crash_Clash.wav"></audio>
+    <audio padCode="90" src="/public/audio/PMBH_Crash_Clash.wav"></audio>
     <audio padCode="88" src="/public/audio/woo.wav"></audio>
     <audio padCode="67" src="/public/audio/hey.wav"></audio>
 
-    <audio id="my-audio" controls></audio>
-    <!-- <audio id="my-audio-2" controls></audio> -->
-    
-    <button id="btnStart">START RECORDING</button><br />
-    <button id="btnStop">STOP RECORDING</button>
+    <!-- <audio id="my-audio" controls></audio> -->
 
-    <script>
-    
+     
+    <!-- <button id="btnStart">START RECORDING</button><br /> -->
+    <!-- <button id="btnStop">STOP RECORDING</button>  -->
 
+
+    <script> //button blinks while recording 
+      recordButtons = document.querySelectorAll(".red-button")
+      for (const button of recordButtons) {
+        
+        button.addEventListener("click", ()=>{
+          if(button.classList.contains("record-on")) {
+            button.classList.remove("record-on")
+          } else {
+              button.classList.add("record-on")
+          }
+          for (const newButton of recordButtons) {
+            if(button !== newButton)
+               newButton.classList.remove("record-on")
+          }
+        })
+      }
+
+    </script>
+
+    <script> //plays audio on click or keydown
+    
       buttons = document.querySelectorAll("p")
       for (const button of buttons) {
         button.addEventListener("click", playSound)
@@ -120,32 +139,27 @@
 
       navigator.mediaDevices.getUserMedia({audio:true, video:false})
         .then(function (mediaStreamObj) {
-          //connect the media stream to the first video element
-          let audio = document.getElementById('my-audio');
-          audio.srcObject = mediaStreamObj;
+          // let audio = document.getElementById('my-audio');
+          // audio.srcObject = mediaStreamObj;
           
-      
-
-          audio.onloadedmetadata = function (e) {
-            //show in the audio element what is being captured by the webcam
-            audio.play();
-          };
-
-          //add listeners for saving audio/audio
-          let start = document.getElementById('btnStart');
-          let stop = document.getElementById('btnStop');
-          let savedAudio = document.querySelector("audio[padCode='90']")
+          let recordButtons = document.querySelectorAll(".red-button"); 
+          let audioPlayback = document.querySelector("audio[padCode='90']")
           let mediaRecorder = new MediaRecorder(mediaStreamObj);
           let chunks = [];
 
-          start.addEventListener('click', (e) => {
-            mediaRecorder.start();
-            console.log(mediaRecorder.state);
-          })
-          stop.addEventListener('click', (e) => {
-            mediaRecorder.stop();
-            console.log(mediaRecorder.state);
-          });
+         for (const button of recordButtons) {
+           button.addEventListener('click', (e) => {
+            //  let audioPlayback = document.querySelector("audio[padCode='90']")
+              if (!button.classList.contains("record-on")) {
+                mediaRecorder.stop();
+                console.log(mediaRecorder.state);
+              } else {
+                mediaRecorder.start();
+                console.log(mediaRecorder.state);
+              }
+           })
+         }
+
           mediaRecorder.ondataavailable = function (e) {
             chunks.push(e.data);
           }
@@ -153,9 +167,7 @@
             let blob = new Blob(chunks, { 'type': 'audio/wav' });
             chunks = [];
             let audioURL = window.URL.createObjectURL(blob);
-              console.log(audioURL);
-            savedAudio.src = audioURL;
-  
+            audioPlayback.src = audioURL;
           }
         })
         .catch(function (err) {

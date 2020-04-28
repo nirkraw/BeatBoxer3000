@@ -61,9 +61,25 @@ body {
 
 .red-button {
     position: absolute;
-    left: 31px;
+    left: 33px;
     top: 115px;
     height: 30px;
+   
+}
+
+.record-on {
+ animation: BLINK 1s infinite;
+}
+
+@-webkit-keyframes BLINK {
+  0%, 49% {
+    border: 2px solid red;
+    border-radius: 40px;
+  }
+  50%, 100% {
+    border: 1px solid rgb(230, 229, 229);
+    border-radius: 40px;
+  }
 }
 
 .red-button:hover {
@@ -80,9 +96,7 @@ body {
 
 }
 
-#my-audio, #my-audio-2 {
+#my-audio{
 display: inline-block;
 width: 300px;
-z-index: 10;
-border: 5px solid black;
 }
