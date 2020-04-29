@@ -130,23 +130,24 @@
 
      const playSong = ( () => {
        let audio;
+       let pad;
        if (beats.length === 0) return;
-       console.log(beats)
+       console.log(beats);
        beats.forEach(beat => {
          setTimeout(() => {
-            audio = document.querySelector(`audio[padCode="${beat.note}"]`)
+            audio = document.querySelector(`audio[padCode="${beat.note}"]`);
             audio.play(); 
-         }, beat.clickedTime)
-        })
+         }, beat.clickedTime);
+
+         pad = document.querySelector(`.pad[padCode="${beat.note}"]`);
+         pad.classList.add('pressed');
+
+         setTimeout(function () {
+           pad.classList.remove("pressed");
+         }, beat.clickedTime + 100);
+        });
       });
          
-        //  const pad = document.querySelector(`.pad[padCode="${beat.note}"]`)
-        //  pad.classList.add('pressed');
-         
-        //  setTimeout(function () {
-        //   pad.classList.remove("pressed")
-        //  }, 100)}
-    
        
      playButton = document.querySelector(".play-button")
      recordBeat = document.querySelector(".record-beat");
