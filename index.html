@@ -29,7 +29,8 @@
     <div class="pad-container">
       <h1 class="beat-boxer-3000">BB3000</h1>
       <p class="record-label">Record</p>
-      <div id="record-beat" ></div>
+      <div class="record-beat" ></div>
+      <button class="play-button">Play</button>
       <div class=pad-subcontainer>
         <div padCode="81" class="pad">
           <p>Q</p>
@@ -119,11 +120,51 @@
           }, 2800);
         })
       }
-
+      
     </script>
 
-    <script> //plays audio on click or keydown
+    <script> 
+     let startingTime;
+     let beats = [];
+
+
+     const playSong = ( () => {
+       let audio;
+       if (beats.length === 0) return;
+       console.log(beats)
+       beats.forEach(beat => {
+         setTimeout(() => {
+            audio = document.querySelector(`audio[padCode="${beat.note}"]`)
+            audio.play(); 
+         }, beat.clickedTime)
+        })
+      });
+         
+        //  const pad = document.querySelector(`.pad[padCode="${beat.note}"]`)
+        //  pad.classList.add('pressed');
+         
+        //  setTimeout(function () {
+        //   pad.classList.remove("pressed")
+        //  }, 100)}
     
+       
+     playButton = document.querySelector(".play-button")
+     recordBeat = document.querySelector(".record-beat");
+
+     recordBeat.addEventListener("click", () => {
+        recordBeat.classList.toggle("recording");
+
+        if (recordBeat.classList.contains("recording")) {
+          startingTime = Date.now();
+          playButton.classList.add('hide');
+          beats = [];
+        } else {
+          playButton.classList.remove('hide')
+        }
+      })
+
+      playButton.addEventListener("click", playSong)
+
       buttons = document.querySelectorAll("p")
       for (const button of buttons) {
         button.addEventListener("click", playSound)
@@ -139,6 +180,9 @@
         }
         const audio = document.querySelector(`audio[padCode="${event}"]`)
         if(!audio) return;
+        if (recordBeat.classList.contains("recording")) {
+           beats.push({note: event, clickedTime: (Date.now() - startingTime)});
+        }
         audio.currentTime= 0;
         audio.play();
         const pad = document.querySelector(`.pad[padCode="${event}"]`)
@@ -147,6 +191,9 @@
           pad.classList.remove("pressed")
         }, 100)
       };
+
+      
+
     </script>
 
     <script>

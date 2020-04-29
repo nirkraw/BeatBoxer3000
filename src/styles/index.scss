@@ -53,7 +53,7 @@ body {
 
 @-webkit-keyframes glow2 {
   from {
-    box-shadow: -1px -5px 10px  rgb(248, 248, 248);
+    box-shadow: -1px -5px 10px  rgb(226, 226, 224);
   }
   
   to {
@@ -113,8 +113,6 @@ body {
   }
 }
 
-
-
 .pad > p {
     width: 100%;
     height: 100%;
@@ -122,7 +120,6 @@ body {
     padding-top: 50px;
     font-family: sans-serif;
     font-size: 40px;
-
 }
 
 #my-audio{
@@ -130,17 +127,22 @@ body {
     width: 300px;
 }
 
-#record-beat {
+.record-beat {
     height: 30px;
     width: 30px;
     margin-top: 0;
-    border-radius: 10px;
+    border-radius: 40px;
     background-color: red;
     background-image: linear-gradient(to bottom, red, rgb(204, 138, 138));
     box-sizing: border-box;
     border: 3px rgb(73, 73, 73) outset;
     animation: glow 0.8s ease-in-out infinite alternate;
     
+}
+
+.recording {
+   border: 3px rgb(73, 73, 73) inset;
+   animation: BLINK .8s infinite;
 }
 
 @-webkit-keyframes glow {
@@ -162,7 +164,7 @@ body {
     letter-spacing: 1px;
 }
 
-#record-beat:hover {
+.record-beat:hover {
     cursor: pointer;
     border: 3px rgb(134, 134, 134) outset;
 }
@@ -176,4 +178,9 @@ body {
     font-family: Helvetica;
     font-style: italic;
     
+}
+
+
+.hide{
+    display: none;
 }
