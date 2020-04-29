@@ -94,17 +94,21 @@
       for (const button of recordButtons) {
         button.addEventListener("click", ()=>{
          
-          if(button.classList.contains("record-on")) {
-            button.classList.remove("record-on")
-            clearInterval(beep);
-            metronome.pause();
-          } else {
+          if(!button.classList.contains("record-on")) {
               button.classList.add("record-on")
               beep = setInterval(() => {
                 console.log("beep");
-              metronome.volume = 1.0
+              metronome.volume = 1.0;
               metronome.play();
             }, 700);
+              setTimeout(() => {
+              clearInterval(beep)
+            }, 2800);
+          } else {
+            button.classList.remove("record-on")
+            clearInterval(beep);
+            metronome.pause();
+            
           }
           for (const newButton of recordButtons) {
             if(button !== newButton) {
@@ -115,9 +119,7 @@
               }
             }
           }
-           setTimeout(() => {
-            clearInterval(beep)
-          }, 2800);
+         
         })
       }
       
@@ -129,7 +131,6 @@
 
       playButton = document.querySelector(".play-button")
       
-
      const playBeat = ( () => {
        let audio;
        let pad;
@@ -145,13 +146,11 @@
               audio.play(); 
               pad = document.querySelector(`.pad[padCode="${beat.note}"]`);
               pad.classList.add('pressed');
-              debugger
           }, beat.clickedTime );
           
           setTimeout(() => {
           pad = document.querySelector(`.pad[padCode="${beat.note}"]`);
-          pad.classList.remove("pressed");
-          debugger 
+          pad.classList.remove("pressed"); 
           console.log(pad)
           playButton.classList.remove("playing");
           }, beat.clickedTime + 100);

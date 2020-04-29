@@ -49,6 +49,7 @@ body {
     background-color: rgb(89, 88, 88);
     height: 100px;
     width: 100px;
+    margin-top: 0px;
     margin-left: 20px;
     margin-right: 20px;
     font-size: 50px;
@@ -60,8 +61,20 @@ body {
     border-right: 3px rgb(73, 73, 73);
     border-style: outset;
     box-shadow: -3px 5px 5px  rgb(106, 106, 105);
+    box-sizing: border-box;
 }
 
+.pad > p {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 40px;
+    color: white;
+}
+
+.pressed {
+    border: 5px rgb(250, 13, 13) inset;
+    box-shadow: none;
+}
 
 ::selection {
     color: none;
@@ -71,12 +84,6 @@ body {
 .pad:hover {
     cursor: pointer;
     background-color: rgb(101, 101, 101);
-}
-
-
-.pressed {
-    border: 5px rgb(250, 13, 13) inset;
-    transform: scale(1.0);
 }
 
 
@@ -96,8 +103,8 @@ body {
 }
 
 .red-button:hover {
-    cursor: pointer;
     background: rgb(255,0,0);
+    cursor: pointer;
     background: radial-gradient(circle, rgba(255,0,0,0.7511379551820728) 50%, rgba(255,255,255,1) 100%);
 }
 
@@ -118,20 +125,7 @@ body {
   }
 }
 
-.pad > p {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    padding-top: 60px;
-    font-family: sans-serif;
-    font-size: 40px;
-    color: white;
-}
 
-#my-audio{
-    display: inline-block;
-    width: 300px;
-}
 
 .record-beat {
     height: 60px;
@@ -145,7 +139,7 @@ body {
 }
 
 .record-beat:hover {
-    cursor: pointer;
+    cursor: pointer; 
     background: rgb(255,0,0);
     background: radial-gradient(circle, rgba(255,0,0,0.7511379551820728) 50%, rgba(255,255,255,1) 100%);
 }
