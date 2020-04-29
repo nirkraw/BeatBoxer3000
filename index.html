@@ -25,7 +25,19 @@
   
   <body>
     <script src="./dist/main.js"></script>
+    <div class="hide" class="pad-tutorial">Press the corresponding letter on your keyboard or click the pad to hear the sound</div>
+    <img class="hide" class="arrow1" src="./public/images/arrow.png" alt="arrow">
+    <img class="hide" class="arrow2" src="./public/images/arrow.png" alt="arrow">
+    <img class="hide" class="arrow3" src="./public/images/arrow.png" alt="arrow">
+    <img class="hide" class="arrow4" src="./public/images/arrow.png" alt="arrow">
 
+    <div class="hide" class="record-sound-tutorial-1">Click the red button to start recording your sound for the corresponding pad. </div>
+    <div class="hide" class="record-sound-tutorial-2">You will hear 4 beeps to count off your recording. </div>
+    <div class="hide" class="record-sound-tutorial-3">Press the button again to end recording. Use headphones for best results.</div>
+    <div class="hide" class="record-beat-tutorial">Once you have your sounds setup click this big button to start recording. Press again to stop.</div> 
+    <div class="hide" class="play-button-tutorial">Click play to hear it back!</div> 
+    
+    <button class="instructions-button">Next</button>
 
     <div class="pad-container">
       <h1 class="beat-boxer-3000">BB3000</h1>
@@ -87,11 +99,22 @@
 
     <audio id="metronome" src="/public/audio/beep.wav"></audio>
 
-
-    
     <script src="./src/scripts/metronome.js"></script>
     <script src="./src/scripts/recordingBeat.js"></script>
     <script src="./src/scripts/recordingSound.js"></script>
+
+    <script>
+      next = document.querySelector(".instructions-button");
+      
+      startInstructions = (() => {
+        console.log("hello");
+       document.querySelector(".pad-tutorial").classList.remove("hide");
+        document.querySelector(".arrow1").classList.remove("hide");
+      });
+      
+      next.addEventListener("click", startInstructions);
+    </script>
+
 
   </body>
 </html>

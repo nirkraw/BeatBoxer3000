@@ -1,4 +1,5 @@
 (function() {
+    
     navigator.mediaDevices.getUserMedia({ audio: true, video: false })
     .then(function (mediaStreamObj) {
         let recordButtons = document.querySelectorAll(".red-button");
@@ -34,4 +35,5 @@
     .catch(function (err) {
         console.log(err.name, err.message);
     });
-}();
+
+})();
