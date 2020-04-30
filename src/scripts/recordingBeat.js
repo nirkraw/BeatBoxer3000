@@ -34,13 +34,14 @@
 
     recordBeat.addEventListener("click", () => {
         recordBeat.classList.toggle("beat-recording");
+        console.log(recordBeat);
         if (recordBeat.classList.contains("beat-recording")) {
             startingTime = Date.now();
             beats = [];
         }
     })
 
-    playButton.addEventListener("click", playBeat)
+    playButton.addEventListener("click", playBeat);
 
     buttons = document.querySelectorAll("p")
     for (const button of buttons) {

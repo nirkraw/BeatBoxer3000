@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="./dist/main.css" />
 
     <link href="./public/images/studio.jpg" rel="studio" type="image" />
-    <link href="./public/images/redbutton.png" rel="studio" type="image" />
-
 
     <link href="./public/audio/kick.wav" rel="kick" type="wav" />
     <link href="./public/audio/hihat.wav" rel="hihat" type="wav" />
@@ -39,11 +37,11 @@
           <div class="record-sound-tutorial-1">Click the red button to start recording your sound for the corresponding pad.</div>
           <div class="record-sound-tutorial-2">You will hear 4 beeps to count off your recording. </div>
           <div class="record-sound-tutorial-3">Press the button again to end recording.</div>
-          <div class="record-beat-tutorial">Once you have your sounds setup click this big button to start recording. Press again to stop.</div>
-          <div class="play-button-tutorial">Click play to hear it back!</div>
+          <div class="big-button-tutorial">Once you have your sounds setup, click this big button to start recording. Press again to stop.</div>
+          <div class="play-button-tutorial">Click Play to hear it back!</div>
 
           <h1 class="beat-boxer-3000">BB3000</h1>
-          <div class="record-beat" ></div>
+          <div class="record-beat"></div>
           <div class="play-button">Play</div>
           <div class="pad-subcontainer">
           <div padCode="81" class="pad">
@@ -100,6 +98,8 @@
     <audio padCode="67" src="/public/audio/hey.wav"></audio>
 
     <audio id="metronome" src="/public/audio/beep.wav"></audio>
+    <audio id="cable" src="/public/audio/cable.wav"></audio>
+    <audio id="tom" src="/public/audio/tom.wav"></audio>
 
     <script src="./src/scripts/metronome.js"></script>
     <script src="./src/scripts/recordingBeat.js"></script>
@@ -116,12 +116,17 @@
       recordSound1 = document.querySelector(".record-sound-tutorial-1");
       recordSound2 = document.querySelector(".record-sound-tutorial-2");
       recordSound3 = document.querySelector(".record-sound-tutorial-3");
-      recordBeat = document.querySelector(".record-beat-tutorial")
+      recordBeat = document.querySelector(".big-button-tutorial")
       playButton = document.querySelector(".play-button-tutorial")
-
+      nextAudio = document.getElementById("tom");
+      readyAudio = document.getElementById("cable");
 
       tutorial = (() => {
         stage++
+        if(stage !== 7 ) {
+          nextAudio.currentTime = 0;
+          nextAudio.play();
+        }
         if(stage === 1) {
           next.classList.add("show");
           next.classList.remove("restart-tutorial");
@@ -162,11 +167,12 @@
           playButton.classList.remove("show");
           arrow4.classList.remove("show");
           stage = 0;
+          readyAudio.play();
         }
        
       });
       
-      window.addEventListener("load", tutorial); 
+      // window.addEventListener("load", tutorial); 
       next.addEventListener("click", tutorial); 
     </script>
 
