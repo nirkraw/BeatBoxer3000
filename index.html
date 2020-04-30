@@ -24,69 +24,71 @@
   </head>
   
   <body>
-    <script src="./dist/main.js"></script>
-    <div class="hide" class="pad-tutorial">Press the corresponding letter on your keyboard or click the pad to hear the sound</div>
-    <img class="hide" class="arrow1" src="./public/images/arrow.png" alt="arrow">
-    <img class="hide" class="arrow2" src="./public/images/arrow.png" alt="arrow">
-    <img class="hide" class="arrow3" src="./public/images/arrow.png" alt="arrow">
-    <img class="hide" class="arrow4" src="./public/images/arrow.png" alt="arrow">
+    <div class="parent-div">
+      <script src="./dist/main.js"></script>
+      
+      
+      <button class="instructions-button">Next</button>
 
-    <div class="hide" class="record-sound-tutorial-1">Click the red button to start recording your sound for the corresponding pad. </div>
-    <div class="hide" class="record-sound-tutorial-2">You will hear 4 beeps to count off your recording. </div>
-    <div class="hide" class="record-sound-tutorial-3">Press the button again to end recording. Use headphones for best results.</div>
-    <div class="hide" class="record-beat-tutorial">Once you have your sounds setup click this big button to start recording. Press again to stop.</div> 
-    <div class="hide" class="play-button-tutorial">Click play to hear it back!</div> 
-    
-    <button class="instructions-button">Next</button>
+      <div class="pad-container">
+          <div class="pad-tutorial">Press the corresponding letter on your keyboard or click the pad to hear the sound</div>
+          <img class="arrow1" src="./public/images/arrow.png" alt="arrow">
+          <img class="arrow2" src="./public/images/arrow.png" alt="arrow">
+          <img class="arrow3" src="./public/images/arrow.png" alt="arrow">
+          <img class="arrow4" src="./public/images/arrow.png" alt="arrow">
+          <div class="record-sound-tutorial-1">Click the red button to start recording your sound for the corresponding pad.</div>
+          <div class="record-sound-tutorial-2">You will hear 4 beeps to count off your recording. </div>
+          <div class="record-sound-tutorial-3">Press the button again to end recording.</div>
+          <div class="record-beat-tutorial">Once you have your sounds setup click this big button to start recording. Press again to stop.</div>
+          <div class="play-button-tutorial">Click play to hear it back!</div>
 
-    <div class="pad-container">
-      <h1 class="beat-boxer-3000">BB3000</h1>
-      <div class="record-beat" ></div>
-      <div class="play-button">Play</div>
-      <div class=pad-subcontainer>
-        <div padCode="81" class="pad">
-          <p>Q</p>
-          <div class="red-button" ></div>
+          <h1 class="beat-boxer-3000">BB3000</h1>
+          <div class="record-beat" ></div>
+          <div class="play-button">Play</div>
+          <div class="pad-subcontainer">
+          <div padCode="81" class="pad">
+            <p>Q</p>
+            <div class="red-button" ></div>
+          </div>
+          <div padCode="87" class="pad">
+            <p>W</p>
+            <div class="red-button" ></div>
+          </div>
+          <div padCode="69" class="pad">
+            <p>E</p>
+            <div class="red-button" ></div>
+          </div>
         </div>
-        <div padCode="87" class="pad">
-          <p>W</p>
-          <div class="red-button" ></div>
+        <div class="pad-subcontainer">
+          <div padCode="65" class="pad">
+            <p>A</p>
+            <div class="red-button" ></div>
+          </div>
+          <div padCode="83" class="pad">
+            <p>S</p>
+            <div class="red-button" ></div>
+          </div>
+          <div padCode="68" class="pad">
+            <p>D</p>
+            <div class="red-button" ></div>
+          </div>
         </div>
-        <div padCode="69" class="pad">
-          <p>E</p>
-          <div class="red-button" ></div>
-        </div>
+          <div class="pad-subcontainer">
+          <div padCode="90" class="pad">
+            <p>Z</p>
+            <div class="red-button" ></div>
+          </div>
+          <div padCode="88" class="pad">
+            <p>X</p>
+            <div class="red-button" ></div>
+          </div>
+          <div padCode="67" class="pad">
+            <p>C</p>
+            <div class="red-button" ></div>
+          </div>
+          </div>
       </div>
-      <div class=pad-subcontainer>
-        <div padCode="65" class="pad">
-          <p>A</p>
-          <div class="red-button" ></div>
-        </div>
-        <div padCode="83" class="pad">
-          <p>S</p>
-          <div class="red-button" ></div>
-        </div>
-        <div padCode="68" class="pad">
-          <p>D</p>
-          <div class="red-button" ></div>
-        </div>
-      </div>
-        <div class=pad-subcontainer>
-        <div padCode="90" class="pad">
-          <p>Z</p>
-          <div class="red-button" ></div>
-        </div>
-        <div padCode="88" class="pad">
-          <p>X</p>
-          <div class="red-button" ></div>
-        </div>
-        <div padCode="67" class="pad">
-          <p>C</p>
-          <div class="red-button" ></div>
-        </div>
-        </div>
     </div>
-
     <audio padCode="81" src="/public/audio/kick.wav"></audio>
     <audio padCode="87" src="/public/audio/snare.wav" ></audio>
     <audio padCode="69" src="/public/audio/hihat.wav"></audio>
@@ -104,15 +106,68 @@
     <script src="./src/scripts/recordingSound.js"></script>
 
     <script>
+      stage = 0; 
       next = document.querySelector(".instructions-button");
-      
-      startInstructions = (() => {
-        console.log("hello");
-       document.querySelector(".pad-tutorial").classList.remove("hide");
-        document.querySelector(".arrow1").classList.remove("hide");
+      pad = document.querySelector(".pad-tutorial");
+      arrow1 = document.querySelector(".arrow1");
+      arrow2 = document.querySelector(".arrow2");
+      arrow3 = document.querySelector(".arrow3");
+      arrow4 = document.querySelector(".arrow4");
+      recordSound1 = document.querySelector(".record-sound-tutorial-1");
+      recordSound2 = document.querySelector(".record-sound-tutorial-2");
+      recordSound3 = document.querySelector(".record-sound-tutorial-3");
+      recordBeat = document.querySelector(".record-beat-tutorial")
+      playButton = document.querySelector(".play-button-tutorial")
+
+
+      tutorial = (() => {
+        stage++
+        if(stage === 1) {
+          next.classList.add("show");
+          next.classList.remove("restart-tutorial");
+          next.innerHTML = "Next"
+          pad.classList.add("show");
+          arrow1.classList.add("show");
+        }
+        if(stage === 2) {
+          pad.classList.remove("show");
+          arrow1.classList.remove("show");
+          recordSound1.classList.add("show");
+          arrow2.classList.add("show");
+        }
+        if(stage === 3) {
+          recordSound2.classList.add("show");
+        }
+        if(stage === 4) {
+          recordSound3.classList.add("show");
+        }
+        if(stage === 5 ) {
+          recordSound1.classList.remove("show");
+          recordSound2.classList.remove("show");
+          recordSound3.classList.remove("show");
+          arrow2.classList.remove("show");
+          recordBeat.classList.add("show");
+          arrow3.classList.add("show"); 
+        }
+        if(stage == 6) {
+          recordBeat.classList.remove("show");
+          arrow3.classList.remove("show");
+          playButton.classList.add("show");
+          arrow4.classList.add("show");
+          next.innerHTML = "Ready!"
+        }
+        if(stage === 7) {
+          next.classList.add("restart-tutorial");
+          next.innerHTML = "Restart tutorial"
+          playButton.classList.remove("show");
+          arrow4.classList.remove("show");
+          stage = 0;
+        }
+       
       });
       
-      next.addEventListener("click", startInstructions);
+      window.addEventListener("load", tutorial); 
+      next.addEventListener("click", tutorial); 
     </script>
 
 

@@ -9,8 +9,12 @@ body {
     background-size: 130%;
     background-position-y: 30%;
     background-repeat: no-repeat;
-    position: relative;
+    
     height: 100%;
+}
+
+.parent-div {
+    height: 1000px;
 }
 
 
@@ -39,10 +43,10 @@ body {
 
 .pad-tutorial {
     width: 200px;
-    height: 100px;
+    height: contain;
     position: absolute;
-    left: 115px;
-    top: 360px;
+    right: 575px;
+    top: 160px;
     background: rgb(83, 83, 83);
     z-index: 2;
     text-align: center;
@@ -52,6 +56,7 @@ body {
     padding: 2px 5px 2px 5px;
     animation: move 0.8s ease-in-out infinite alternate;
     font-size: 20px;
+    display: none;
 }
 
 @-webkit-keyframes move {
@@ -67,96 +72,52 @@ body {
 .arrow1 {
     height: 60px;
     position: absolute;
-    left: 26%;
-    top: 400px;
+    right: 490px;
+    top: 180px;
     z-index: 1;
+    display: none;
 }
 
 .arrow2 {
     height: 70px;
     transform: rotateY(3.142rad);
-    transform: rotate(-45deg);
+    transform: rotate(-35deg);
     position: absolute;
-    left: 26%;
-    top: 500px;
+    right: 475px;
+    top: 285px;
     z-index: 1;
+    display: none;
+    
 }
 
 .arrow3 {
     height: 70px;
     transform: rotate(180deg);
     position: absolute;
-    right: 42%;
-    top: 230px;
+    left: 355px;
+    top: 25px;
     z-index: 1;
+    display: none;
+    
+    
 }
 
 .arrow4 {
     height: 70px;
     transform: rotate(140deg);
     position: absolute;
-    right: 42%;
-    top: 250px;
     z-index: 1;
+    left: 325px;
+    bottom: 580px;
+    display: none;
 }
 
 .record-sound-tutorial-1 {
     width: 200px;
     height: fit-content;
     position: absolute;
-    left: 115px;
-    top: 550px;
-    background: rgb(83, 83, 83);
-    z-index: 2;
-    text-align: center;
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: 2px 5px 2px 5px;
-    animation: move 0.8s ease-in-out infinite alternate;
-    font-size: 20px;
-}
-
-.record-sound-tutorial-2 {
-    width: 200px;
-    height: fit-content;
-    position: absolute;
-    left: 115px;
-    top: 660px;
-    background: rgb(83, 83, 83);
-    z-index: 2;
-    text-align: center;
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: 2px 5px 2px 5px;
-    animation: move 0.8s ease-in-out infinite alternate;
-    font-size: 20px;
-}
-
-.record-sound-tutorial-3 {
-    width: 200px;
-    height: fit-content;
-    position: absolute;
-    left: 115px;
-    top: 750px;
-    background: rgb(83, 83, 83);
-    z-index: 2;
-    text-align: center;
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: 2px 5px 2px 5px;
-    animation: move 0.8s ease-in-out infinite alternate;
-    font-size: 20px;
-}
-
-.record-beat-tutorial {
-    width: 200px;
-    height: fit-content;
-    position: absolute;
-    right: 315px;
-    top: 180px;
+    right: 575px;
+    top: 300px;
     background: rgb(83, 83, 83);
     z-index: 2;
     text-align: center;
@@ -169,12 +130,12 @@ body {
     display:none;
 }
 
-.play-button-tutorial {
-    width: 210px;
+.record-sound-tutorial-2 {
+    width: 200px;
     height: fit-content;
     position: absolute;
-    right: 300px;
-    top: 225px;
+    right: 575px;
+    top: 420px;
     background: rgb(83, 83, 83);
     z-index: 2;
     text-align: center;
@@ -184,10 +145,68 @@ body {
     padding: 2px 5px 2px 5px;
     animation: move 0.8s ease-in-out infinite alternate;
     font-size: 20px;
+    display:none
 }
 
-.hide {
+.record-sound-tutorial-3 {
+    width: 200px;
+    height: fit-content;
+    position: absolute;
+    right: 575px;
+    top: 515px;
+    background: rgb(83, 83, 83);
+    z-index: 2;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 2px 5px 2px 5px;
+    animation: move 0.8s ease-in-out infinite alternate;
+    font-size: 20px;
+    display:none
+ 
+}
+
+.record-beat-tutorial {
+    width: 200px;
+    height: fit-content;
+    position: absolute;
+    left: 475px;
+    top: 5px;
+    background: rgb(83, 83, 83);
+    z-index: 2;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 2px 5px 2px 5px;
+    animation: move 0.8s ease-in-out infinite alternate;
+    font-size: 20px;
     display: none;
+    
+}
+
+.play-button-tutorial {
+    width: 210px;
+    height: fit-content;
+    position: absolute;
+    left: 430px;
+    bottom: 630px;
+    background: rgb(83, 83, 83);
+    z-index: 2;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 2px 5px 2px 5px;
+    animation: move 0.8s ease-in-out infinite alternate;
+    font-size: 20px;
+    display: none;
+   
+}
+
+.show {
+    display: block;
 }
 
 .instructions-button {
@@ -203,6 +222,7 @@ body {
     color: red;
     border-radius: 10px;
     border-style: outset;
+    outline: none;
 }
 
 .instructions-button:hover {
@@ -211,6 +231,14 @@ body {
     animation: none;
     border: 2px solid black;
     border-style: inset;
+}
+
+.restart-tutorial {
+    height: contain;
+    width: contain;
+    animation: none;
+    font-size: 15px;
+    color: white;
 }
 
 ///////////////////////////
@@ -363,7 +391,6 @@ body {
     font-style: bold;
     color: white;
     border-radius: 5px;
-    position: relative;
     border-left: 3px rgb(41, 41, 41);
     border-bottom: 3px rgb(73, 73, 73);
     border-top: 1px rgb(73, 73, 73);
