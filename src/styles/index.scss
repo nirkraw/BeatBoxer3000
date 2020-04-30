@@ -340,7 +340,7 @@ body {
 }
 
 .beat-recording {
-   border: 30px rgb(4, 23, 106) inset;
+   animation: blink .8s infinite;
 }
 
 @-webkit-keyframes glow {
