@@ -58,7 +58,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    display: none;
 }
 
 .start-tour {
@@ -326,8 +325,8 @@ body {
     height: 60px;
     width: 150px; 
     position: absolute;
-    right: 35px;
-    top: 800px;
+    left: 735px;
+    top: 700px;
     background: rgb(83, 83, 83);
     animation: move 0.8s ease-in-out infinite alternate;
     font-size: 40px;

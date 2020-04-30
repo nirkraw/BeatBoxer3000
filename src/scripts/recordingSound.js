@@ -6,6 +6,7 @@
         let mediaRecorder = new MediaRecorder(mediaStreamObj);
         let chunks = [];
 
+    //allows for users to record a sound to an individual pad 
         for (const button of recordButtons) {
             button.addEventListener('click', (e) => {
                 const padCode = e.path[1].attributes[0].nodeValue
@@ -14,6 +15,7 @@
                 if (!button.classList.contains("record-on")) {
                     mediaRecorder.stop();
                 } else {
+    //delays recording in order to account for the metrenome count down 
                     setTimeout(() => {
                         mediaRecorder.start();
                     }, 3500);

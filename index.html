@@ -5,25 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
-
-    <link href="./public/images/studio.jpg" rel="studio" type="image" />
-
-    <link href="./public/audio/kick.wav" rel="kick" type="wav" />
-    <link href="./public/audio/hihat.wav" rel="hihat" type="wav" />
-    <link href="./public/audio/hey.wav" rel="hey" type="wav" />
-    <link href="./public/audio/MRLSHZ_vocal_group_ah_chord_harm_dry_Cm.wav" rel="ah1" type="wav" />
-    <link href="./public/audio/MRLSHZ_vocal_group_ah_chord_harm_dry_Fm7.wav" rel="ah2" type="wav" />
-    <link href="./public/audio/Reverse_Crash_1.wav" rel="rev-crash" type="wav" />
-    <link href="./public/audio/snare.wav" rel="snare" type="wav" />
-    <link href="./public/audio/woo.wav" rel="woo" type="wav" />
-    <link href="./public/audio/PMBH_Crash_Clash.wav" rel="crash" type="wav" />
-
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <title>Document</title>
   </head>
   
   <body>
+    
     <div class="parent-div">
       <div class="opening">
         <h1 class="welcome-message">Welcome to the BeatBoxer3000</h1>
@@ -33,30 +21,28 @@
         <button class="start-tour">Yup!</button>
         <button class="skip-tour">No thanks</button>
       </div>
-      <script src="./dist/main.js"></script>
       
-      
-      <button class="instructions-button">Next</button>
-
       <div class="pad-container">
-         
-          <div class="pad-tutorial">Press the corresponding letter on your keyboard or click the pad to hear the sound</div>
-          <img class="arrow1" src="./public/images/arrow.png" alt="arrow">
-          <img class="arrow2" src="./public/images/arrow.png" alt="arrow">
-          <img class="arrow3" src="./public/images/arrow.png" alt="arrow">
-          <img class="arrow4" src="./public/images/arrow.png" alt="arrow">
-          <img class="arrow5" src="./public/images/arrow.png" alt="arrow">
-          <div class="record-sound-tutorial-1">Click the red button to start recording your sound for the corresponding pad.</div>
-          <div class="record-sound-tutorial-2">You will hear 4 beeps to count off your recording. </div>
-          <div class="record-sound-tutorial-3">Press the button again to end recording.</div>
-          <div class="big-button-tutorial">Once you have your sounds setup, click this big button to start recording. Press again to stop.</div>
-          <div class="play-button-tutorial">Click Play to hear it back!</div>
-          <div class="fader-tutorial">Change the volume for any sound with the volume fader</div>
-
-          <h1 class="beat-boxer-3000">BB3000</h1>
-          <div class="record-beat"></div>
-          <div class="play-button">Play</div>
-          <div class="pad-subcontainer">
+        <!-- tutorial -->
+        <button class="instructions-button">Next</button>
+        <div class="pad-tutorial">Press the corresponding letter on your keyboard or click the pad to hear the sound</div>
+        <img class="arrow1" src="./public/images/arrow.png" alt="arrow">
+        <img class="arrow2" src="./public/images/arrow.png" alt="arrow">
+        <img class="arrow3" src="./public/images/arrow.png" alt="arrow">
+        <img class="arrow4" src="./public/images/arrow.png" alt="arrow">
+        <img class="arrow5" src="./public/images/arrow.png" alt="arrow">
+        <div class="record-sound-tutorial-1">Click the red button to start recording your sound for the corresponding pad.</div>
+        <div class="record-sound-tutorial-2">You will hear 4 beeps to count off your recording. </div>
+        <div class="record-sound-tutorial-3">Press the button again to end recording.</div>
+        <div class="big-button-tutorial">Once you have your sounds setup, click this big button to start recording. Press again to stop.</div>
+        <div class="play-button-tutorial">Click Play to hear it back!</div>
+        <div class="fader-tutorial">Change the volume for any sound with the volume fader</div>
+        <!-- tutorial -->
+        
+        <h1 class="beat-boxer-3000">BB3000</h1>
+        <div class="record-beat"></div>
+        <div class="play-button">Play</div>
+        <div class="pad-subcontainer">
           <div padCode="81" class="pad">
             <p>Q</p>
             <div class="red-button" ></div>
@@ -90,7 +76,7 @@
             <input padCode="68" type="range" class="fader" min="0" max="1" step=".01">
           </div>
         </div>
-          <div class="pad-subcontainer">
+        <div class="pad-subcontainer">
           <div padCode="90" class="pad">
             <p>Z</p>
             <div class="red-button" ></div>
@@ -106,9 +92,9 @@
             <div class="red-button" ></div>
             <input padCode="67" type="range" class="fader" min="0" max="1" step=".01">
           </div>
-          </div>
+        </div>
       </div>
-
+      
       <footer>
         <a href="https://github.com/nirkraw" target="_blank"> 
           <img class="github" src="./public/images/Gh-Logo.png" alt="githublogo">
@@ -128,13 +114,15 @@
     <audio padCode="90" src="/public/audio/PMBH_Crash_Clash.wav"></audio>
     <audio padCode="88" src="/public/audio/woo.wav"></audio>
     <audio padCode="67" src="/public/audio/hey.wav"></audio>
-
+    
     <audio id="metronome" src="/public/audio/beep.wav"></audio>
     <audio id="cable" src="/public/audio/cable.wav"></audio>
     <audio id="tom" src="/public/audio/tom.wav"></audio>
+    
 
+    <script src="./dist/main.js"></script>
     <script src="./src/scripts/metronome.js"></script>
-    <script src="./src/scripts/recordingBeat.js"></script>
+    <script src="./src/scripts/playback.js"></script>
     <script src="./src/scripts/recordingSound.js"></script>
     <script src="./src/scripts/tutorial.js"></script>
     
