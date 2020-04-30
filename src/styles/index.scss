@@ -15,6 +15,9 @@ body {
 
 .parent-div {
     height: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -40,6 +43,93 @@ body {
 }
 
 /////////////////////////// Tutorial 
+
+
+.opening {
+    margin-top: 100px;
+    width: 1000px;
+    height: 800px;
+    background-color: rgb(170, 170, 170);
+    z-index: 1;
+    box-sizing: border-box;
+    border: 15px rgb(73, 73, 73) outset;
+    animation: glow 0.8s ease-in-out infinite alternate;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.start-tour {
+    height: 60px;
+    width: contain; 
+    position: absolute;
+    right: 134px;
+    bottom: 90px;
+    background: rgb(83, 83, 83);
+    animation: move 0.8s ease-in-out infinite alternate;
+    font-size: 40px;
+    font-family: sans-serif;
+    color: red;
+    border-radius: 10px;
+    border-style: outset;
+}
+
+.skip-tour {
+    height: 60px;
+    width: contain; 
+    position: absolute;
+    right: 35px;
+    bottom: 20px;
+    background: rgb(83, 83, 83);
+    animation: move 0.9s ease-in-out infinite alternate;
+    font-size: 40px;
+    font-family: sans-serif;
+    color: red;
+    border-radius: 10px;
+    border-style: outset;
+}
+
+.start-tour:hover, .skip-tour:hover {
+    cursor: pointer;
+    background: rgb(133, 132, 132);
+    animation: none;
+    border: 2px solid black;
+    border-style: inset;
+}
+
+.welcome-message{
+    margin-top: 100px;
+    font-size: 50px;
+    color: rgb(70, 69, 69);
+    font-family: 'Raleway', sans-serif;
+}
+
+.description {
+    color:white; 
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    width: 70%;
+}
+
+.take-a-tour {
+   color:white; 
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    width: 70%; 
+}
+
+.note {
+    color:white; 
+    position: absolute;
+    bottom: 50px;
+    left: 30px;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 23px;
+}
 
 .pad-tutorial {
     width: 200px;
@@ -87,7 +177,6 @@ body {
     top: 285px;
     z-index: 1;
     display: none;
-    
 }
 
 .arrow3 {
@@ -97,9 +186,7 @@ body {
     left: 355px;
     top: 25px;
     z-index: 1;
-    display: none;
-    
-    
+    display: none;  
 }
 
 .arrow4 {
@@ -110,6 +197,17 @@ body {
     left: 335px;
     bottom: 505px;
     display: none;
+}
+
+.arrow5 {
+    height: 70px;
+    transform: rotate(30deg);
+    position: absolute;
+    z-index: 1;
+    left: 140px;
+    bottom: 485px;
+    display: none;
+    
 }
 
 .record-sound-tutorial-1 {
@@ -205,8 +303,22 @@ body {
    
 }
 
-.show {
-    display: block;
+.fader-tutorial {
+    width: 210px;
+    height: fit-content;
+    position: absolute;
+    right: 460px;
+    bottom: 500px;
+    background: rgb(83, 83, 83);
+    z-index: 2;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 2px 5px 2px 5px;
+    animation: move 0.8s ease-in-out infinite alternate;
+    font-size: 20px;
+    display: none;
 }
 
 .instructions-button {
@@ -223,7 +335,19 @@ body {
     border-radius: 10px;
     border-style: outset;
     outline: none;
+    display: none;
 }
+
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+
 
 .instructions-button:hover {
     cursor: pointer;
@@ -240,6 +364,8 @@ body {
     font-size: 15px;
     color: white;
 }
+
+
 
 ///////////////////////////
 
@@ -328,6 +454,15 @@ body {
   }
 }
 
+.fader {
+    position: absolute;
+    left: 70px;
+    top: 30px;
+    height: 30px;
+    width: 80px;
+    transform: rotate(-90deg);
+}
+
 .record-beat {
     height: 60px;
     width: 60px;
@@ -345,10 +480,10 @@ body {
 
 @-webkit-keyframes glow {
   from {
-    box-shadow: 0 0 10px rgb(216, 120, 120);
+    box-shadow: 0 0 15px rgb(216, 120, 120);
   }
   to {
-    box-shadow: 0 0 20px rgb(240, 79, 79), 
+    box-shadow: 0 0 20px rgb(228, 45, 45), 
   }
 }
 .record-beat:hover {

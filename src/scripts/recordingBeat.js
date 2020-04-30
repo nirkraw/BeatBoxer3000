@@ -61,8 +61,15 @@
         if (recordBeat.classList.contains("beat-recording")) {
             beats.push({ note: event, clickedTime: (Date.now() - startingTime) });
         }
+
+        fader = document.querySelector(`input[padCode="${event}"]`);
+        fader.oninput = (e) => {
+            audio.volume = e.target.value
+        }
+
         audio.currentTime = 0;
         audio.play();
+        
         const pad = document.querySelector(`.pad[padCode="${event}"]`)
         pad.classList.add('pressed');
         setTimeout(function () {
