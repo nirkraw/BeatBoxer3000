@@ -18,6 +18,7 @@
             currentInterval = setTimeout(() => {
                 audio = document.querySelector(`audio[padCode="${beat.note}"]`);
                 audio.currentTime = 0;
+                audio.volume = beat.volume;
                 audio.play();
                 pad = document.querySelector(`.pad[padCode="${beat.note}"]`);
                 pad.classList.add('pressed');
@@ -63,7 +64,7 @@
         if (!audio) return;
     // when an audio is played during a beat recording, it is stored. 
         if (recordBeat.classList.contains("beat-recording")) {
-            beats.push({ note: event, clickedTime: (Date.now() - startingTime) });
+            beats.push({ note: event, clickedTime: (Date.now() - startingTime), volume: audio.volume });
         }
     //allows for volume control on an individual sound    
         fader = document.querySelector(`input[padCode="${event}"]`);
