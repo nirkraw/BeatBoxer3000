@@ -13,11 +13,9 @@
 
                 if (!button.classList.contains("record-on")) {
                     mediaRecorder.stop();
-                    console.log(mediaRecorder.state);
                 } else {
                     setTimeout(() => {
                         mediaRecorder.start();
-                        console.log(mediaRecorder.state);
                     }, 3500);
                 }
                 mediaRecorder.ondataavailable = function (e) {
@@ -32,8 +30,4 @@
             })
         }
     })
-    .catch(function (err) {
-        console.log(err.name, err.message);
-    });
-
 })();

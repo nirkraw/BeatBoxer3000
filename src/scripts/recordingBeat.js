@@ -10,7 +10,6 @@
         let currentInterval;
         if (beats.length === 0) return;
         playButton.classList.add("playing")
-        console.log(beats);
         for (let i = 0; i < beats.length; i++) {
             const beat = beats[i];
             currentInterval = setTimeout(() => {
@@ -24,7 +23,6 @@
             setTimeout(() => {
                 pad = document.querySelector(`.pad[padCode="${beat.note}"]`);
                 pad.classList.remove("pressed");
-                console.log(pad)
                 playButton.classList.remove("playing");
             }, beat.clickedTime + 100);
         }
@@ -34,7 +32,6 @@
 
     recordBeat.addEventListener("click", () => {
         recordBeat.classList.toggle("beat-recording");
-        console.log(recordBeat);
         if (recordBeat.classList.contains("beat-recording")) {
             startingTime = Date.now();
             beats = [];

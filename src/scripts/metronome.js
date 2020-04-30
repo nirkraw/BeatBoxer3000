@@ -9,7 +9,6 @@
             if (!button.classList.contains("record-on")) {
                 button.classList.add("record-on")
                 beep = setInterval(() => {
-                    console.log("beep");
                     metronome.volume = 1.0;
                     metronome.play();
                 }, 700);
