@@ -11,7 +11,7 @@
       recordSound2 = document.querySelector(".record-sound-tutorial-2");
       recordSound3 = document.querySelector(".record-sound-tutorial-3");
       bigButton = document.querySelector(".big-button-tutorial")
-      playButton = document.querySelector(".play-button-tutorial")
+      playButtonTutorial = document.querySelector(".play-button-tutorial")
       faderTutorial = document.querySelector(".fader-tutorial");
 
       opening = document.querySelector(".opening");
@@ -67,14 +67,14 @@
         if(stage == 7) {
           bigButton.classList.remove("show");
           arrow3.classList.remove("show");
-          playButton.classList.add("show");
+          playButtonTutorial.classList.add("show");
           arrow4.classList.add("show");
           next.innerHTML = "Ready!"
         }
         if(stage === 8) {
           next.classList.add("restart-tutorial");
           next.innerHTML = "See tutorial"
-          playButton.classList.remove("show");
+          playButtonTutorial.classList.remove("show");
           arrow4.classList.remove("show");
           stage = 0;
           readyAudio.volume =.5;

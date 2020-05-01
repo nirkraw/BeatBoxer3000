@@ -2,7 +2,7 @@
     let startingTime;
     let beats = [];
 
-    playButton = document.querySelector(".play-button")
+    playButton = document.querySelector(".play-beat-button");
 
     //function for playing back whole beat
     const playBeat = (() => {
@@ -12,6 +12,7 @@
         if (beats.length === 0) return;
     //nothing happens if the recording is empty
         playButton.classList.add("playing")
+        console.log(playButton);
         for (let i = 0; i < beats.length; i++) {
             const beat = beats[i];
     //plays back each sound at the time it was played at the relative time it was recorded
