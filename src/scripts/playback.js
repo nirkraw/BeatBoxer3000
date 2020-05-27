@@ -12,7 +12,6 @@
         if (beats.length === 0) return;
     //nothing happens if the recording is empty
         playButton.classList.add("playing")
-        console.log(playButton);
         for (let i = 0; i < beats.length; i++) {
             const beat = beats[i];
     //plays back each sound at the time it was played at the relative time it was recorded
@@ -75,7 +74,7 @@
 
         audio.currentTime = 0;
         audio.play();
-    //clears the pressed property 100 milliseconds after being played     
+    //clears the pressed property 100 milliseconds after being played to cut back delay    
         const pad = document.querySelector(`.pad[padCode="${event}"]`)
         pad.classList.add('pressed');
         setTimeout(function () {
